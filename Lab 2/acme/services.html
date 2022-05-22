@@ -6,7 +6,7 @@
     <meta name="description" content="Affordable and professional web design">
 	  <meta name="keywords" content="web design, affordable web design, professional web design">
   	<meta name="author" content="Brad Traversy">
-    <title>Acme Web Deisgn | Services</title>
+    <title>New York | Services</title>
     <link rel="stylesheet" href="./css/style.css">
   </head>
   <body>
@@ -25,64 +25,50 @@
       </div>
     </header>
 
-    <section id="newsletter">
-      <div class="container">
-        <h1>Subscribe To Our Newsletter</h1>
-        <form>
-          <input type="email" placeholder="Enter Email...">
-          <button type="submit" class="button_1">Subscribe</button>
-        </form>
-      </div>
-    </section>
 
     <section id="main">
       <div class="container">
         <article id="main-col">
-          <h1 class="page-title">Services</h1>
-          <ul id="services">
-            <li>
-              <h3>Website Design</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mi augue, viverra sit amet ultricies at, vulputate id lorem. Nulla facilisi.</p>
-						  <p>Pricing: $1,000 - $3,000</p>
-            </li>
-            <li>
-              <h3>Website Maintenance</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mi augue, viverra sit amet ultricies at, vulputate id lorem. Nulla facilisi.</p>
-						  <p>Pricing: $250 per month</p>
-            </li>
-            <li>
-              <h3>Website Hosting</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mi augue, viverra sit amet ultricies at, vulputate id lorem. Nulla facilisi.</p>
-						  <p>Pricing: $25 per month</p>
-            </li>
-          </ul>
-        </article>
-
-        <aside id="sidebar">
+          <h1>Subscribe To Our Newsletter</h1>
           <div class="dark">
-            <h3>Get A Quote</h3>
-            <form class="quote">
+            <h3>You'll get updates of fun events around our city</h3>
+            <form id="my-form" class="quote">
   						<div>
-  							<label>Name</label><br>
-  							<input type="text" placeholder="Name">
+  							<label>First Name</label><br>
+  							<input type="text" placeholder="First Name" required>
   						</div>
-  						<div>
+              <div>
+  							<label>Last Name</label><br>
+  							<input type="text" placeholder="Last Name" required>
+  						</div>
+              <div>
   							<label>Email</label><br>
-  							<input type="email" placeholder="Emial Address">
+  							<input type="email" placeholder="yourname@email.com" required>
   						</div>
   						<div>
-  							<label>Message</label><br>
-  							<textarea placeholder="Message"></textarea>
+  							<label>Gender</label><br>
+  							<input type="radio" id="html" name="fav_language" value="HTML">
+                <label for="html">MALE</label><br>
+                <input type="radio" id="css" name="fav_language" value="CSS">
+                <label for="css">FEMALE</label><br>
   						</div>
   						<button class="button_1" type="submit">Send</button>
 					</form>
           </div>
-        </aside>
+        </article>
+
       </div>
     </section>
 
     <footer>
-      <p>Acme Web Deisgn, Copyright &copy; 2017</p>
+      <p>New York, Copyright &copy; 2022</p>
     </footer>
+
+    <script>
+      document.getElementById('my-form').onsubmit = function () {
+        alert("You have subscribed successfully :)");
+      };
+    </script>
+
   </body>
 </html>
