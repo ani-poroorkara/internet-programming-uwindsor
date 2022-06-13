@@ -13,7 +13,7 @@ def index(request):
 
 
 def about(request):
-    return render(request, 'myapp/about0.html')
+    return render(request, 'myapp/about.html')
 
 def detail(request, id):
     response = HttpResponse()
@@ -32,4 +32,4 @@ def detail(request, id):
     #     para = '<p>'+ str(course.name) + ': ' + str(course.price) + ': ' + str(avail) + '</p>'
     #     response.write(para)
 
-    return render(request, 'myapp/detail0.html', {'name': name,'course_list': course_list, 'category':category})
+    return render(request, 'myapp/detail.html', {'name': name,'course_list': course_list, 'category':category})
