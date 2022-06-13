@@ -9,7 +9,7 @@ from .models import Topic, Course, Student, Order
 # Create your views here.
 def index(request):
     top_list = Topic.objects.all().order_by('id')[:10]
-    return render(request, 'myapp/index0.html', {'top_list': top_list})
+    return render(request, 'myapp/index.html', {'top_list': top_list})
 
 
 def about(request):
