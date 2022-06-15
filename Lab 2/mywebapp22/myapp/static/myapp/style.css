@@ -1,4 +1,19 @@
+body {
+	background-color: rgb(167, 193, 182);
+	color: rgb(95, 8, 8) ;
+}
+
+h1 {
+	font-size:50px;
+	color:black;
+	font-style:normal;
+}
+h2 {
+	font-size:20px;
+	color:rgb(11, 92, 8);
+	font-style:italic;
+}
 .hbar1 {
-    display: inline;
-    margin: 15px;
-   } 
+	display:inline;
+	margin:15px;
+}
