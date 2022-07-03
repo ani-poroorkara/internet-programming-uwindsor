@@ -22,6 +22,12 @@ class Course(models.Model):
     for_everyone = models.BooleanField(default=True)
     description = models.TextField(max_length=300, null=True, blank=True)
 
+    interested = models.PositiveIntegerField(default=False)
+    stages = models.PositiveIntegerField(default=False)
+
+    def discount(self):
+        self.price %= 10
+
     def __str__(self):
         return self.name
 

@@ -11,6 +11,9 @@ def index(request):
     top_list = Topic.objects.all().order_by('id')[:10]
     return render(request, 'myapp/index.html', {'top_list': top_list})
 
+def courses(request):
+    courlist = Course.objects.all().order_by('id')
+    return render(request, 'myapp/courses.html', {'courlist': courlist})
 
 def about(request):
     return render(request, 'myapp/about.html')
