@@ -27,14 +27,6 @@ def detail(request, id):
 
     course_list = Course.objects.filter(topic=id)
 
-    # for course in course_list:
-    #     if course.for_everyone:
-    #         avail = "This Course is For Everyone"
-    #     else:
-    #         avail = "This Course is Not For Everyone!"
-    #     para = '<p>'+ str(course.name) + ': ' + str(course.price) + ': ' + str(avail) + '</p>'
-    #     response.write(para)
-
     return render(request, 'myapp/detail.html', {'name': name,'course_list': course_list, 'category':category})
 
 def place_order(request):
