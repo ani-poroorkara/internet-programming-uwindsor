@@ -36,3 +36,20 @@ def detail(request, id):
     #     response.write(para)
 
     return render(request, 'myapp/detail.html', {'name': name,'course_list': course_list, 'category':category})
+
+def place_order(request):
+    msg = ''
+    courlist = Course.objects.all()
+    if request.method == 'POST':
+        form = Order(request.POST)
+        if form.is_valid():
+            order = form.save(commit=False)
+            if order.levels <= order.course.stages:
+                order.save()
+                msg = 'Your course has been ordered successfully.'
+            else:
+                msg = 'You exceeded the number of levels for this course.'
+            return render(request, 'myapp/order_response.html', {'msg': msg})
+    else:
+        form = Order()
+    return render(request, 'myapp/placeorder.html', {'form':form, 'msg':msg, 'courlist':courlist})
