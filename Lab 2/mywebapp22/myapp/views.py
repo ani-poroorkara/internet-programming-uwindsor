@@ -6,6 +6,8 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from .models import Topic, Course, Student, Order
 
+from .forms import *
+
 # Create your views here.
 def index(request):
     top_list = Topic.objects.all().order_by('id')[:10]
@@ -39,9 +41,22 @@ def place_order(request):
             if order.levels <= order.course.stages:
                 order.save()
                 msg = 'Your course has been ordered successfully.'
+                if Course.price > 150.00:
+                    Course.discount()
             else:
                 msg = 'You exceeded the number of levels for this course.'
             return render(request, 'myapp/order_response.html', {'msg': msg})
     else:
         form = Order()
     return render(request, 'myapp/placeorder.html', {'form':form, 'msg':msg, 'courlist':courlist})
+
+def coursedetail(request, cour_id):
+    course = get_object_or_404(Course,pk=cour_id) 
+    if request.method == 'POST':
+        form = InterestForm(request.POST)
+        if form.is_valid():
+            
+            return HttpResponseRedirect('myapp/coursedetail.html')
+        else:
+            form = InterestForm()
+    return render(request, 'myapp/coursedetail.html', {'course': course, 'form': form})
