@@ -2,8 +2,8 @@
 
 {% block body_block %}
 
-    <form action="{% url 'myapp:place_order' %}" method="post">
-        {{ form.as_p}}
+    <form action="{% url 'myapp:placeOrder' %}" method="post">
+        {{ form.as_p }}
         <input type="submit" value="Place Order" class="btn btn-secondary">
         </form>
 

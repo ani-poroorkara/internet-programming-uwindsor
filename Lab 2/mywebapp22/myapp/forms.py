@@ -7,6 +7,7 @@ class InterestForm(forms.Form):
     levels = forms.IntegerField(initial = 1)
     comments = forms.CharField(label='Additional Comments', required=False, widget=forms.Textarea)
     
+# Order Form
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order;
