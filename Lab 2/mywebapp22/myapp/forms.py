@@ -1,4 +1,4 @@
-import forms
+from django import forms
 from .models import Order
 
 class InterestForm(forms.Form):
@@ -13,7 +13,7 @@ class OrderForm(forms.ModelForm):
         model = Order;
         fields = ['Student', 'course', 'levels', 'order_date']
         widgets = {
-            'student': forms.RadioSelect
+            'Student': forms.RadioSelect
         }
         widgets = {
             'order_date': forms.SelectDateWidget

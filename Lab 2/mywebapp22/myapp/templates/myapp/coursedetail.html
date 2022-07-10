@@ -1,0 +1,13 @@
+{% extends 'myapp/base.html' %} {% block body_block %} 
+{% if course %}
+    <h1>{{ course.name }}</h1>
+    <h1>{{ course.price }}</h1>
+    <h1>{{ course.interested }}</h1>
+
+    {% if course.for_everyone %}
+    <h1>Course is for everyone</h1>
+    {% else %}
+    <h1>Course is not for everyone</h1>
+    {% endif %}
+
+{% endif %} {% endblock %}
