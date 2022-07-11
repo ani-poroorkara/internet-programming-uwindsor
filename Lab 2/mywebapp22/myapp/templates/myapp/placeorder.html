@@ -1,14 +1,31 @@
 {% extends 'myapp/base.html' %}
-
+{% block title %}
+    Courses Available
+{% endblock %}
 {% block body_block %}
-{% for course in courlist %}
-<p>{{ course.name}}</p>
-{% endfor %}
+    <h2>Courses Available</h2>
+    {% if course_list %}
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Name</th>
+            </tr>
+            {% for course in course_list %}
+                <tr>
+                    <td>{{ course.name }}</td>
+                    <td>${{ course.price }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <h2>No courses are available</h2>
+    {% endif %}
 
-    <form action="{% url 'myapp:placeOrder' %}" method="post">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="Place Order" class="btn btn-secondary">
+    <form method="post">
+        {% csrf_token%}
+        {{ form}}
+        <input type="submit" value="Submit" />
     </form>
+    <br/>
 
 {% endblock %}
