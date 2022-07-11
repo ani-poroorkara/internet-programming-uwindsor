@@ -1,6 +1,6 @@
 from unicodedata import category
 from urllib import response
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
 # Create your views here.
 from django.http import HttpResponse
@@ -33,30 +33,37 @@ def detail(request, id):
 
 def place_order(request):
     msg = ''
-    courlist = Course.objects.all()
+    course_list = Course.objects.all()
     if request.method == 'POST':
-        form = Order(request.POST)
+        form = OrderForm(request.POST)
         if form.is_valid():
             order = form.save(commit=False)
             if order.levels <= order.course.stages:
                 order.save()
                 msg = 'Your course has been ordered successfully.'
-                if Course.price > 150.00:
-                    Course.discount()
+                if order.course.price > 150.00:
+                    order.course.discount();
             else:
                 msg = 'You exceeded the number of levels for this course.'
-            return render(request, 'myapp/order_response.html', {'msg': msg})
+            return render(request, 'myapp/order_response.html', {'msg': msg })
     else:
-        form = Order()
-    return render(request, 'myapp/placeorder.html', {'form':form, 'msg':msg, 'courlist':courlist})
+        form = OrderForm()
+    return render(request, 'myapp/placeorder.html', {'form': form, 'msg': msg, 'course_list': course_list})
 
 def coursedetail(request, cour_id):
-    course = get_object_or_404(Course,pk=cour_id) 
+    course = get_object_or_404(Course, pk=cour_id)
     if request.method == 'POST':
         form = InterestForm(request.POST)
         if form.is_valid():
-            
-            return HttpResponseRedirect('myapp/coursedetail.html')
+            if form.cleaned_data["interested"] == "1":
+                course.interested = course.interested+1
+                course.save()
+                return redirect('/myapp/')
+            else:
+                return  redirect('/myapp/')
         else:
-            form = InterestForm()
-    return render(request, 'myapp/coursedetail.html', {'course': course, 'form': form})
+            msg = 'There was an error in saving. Please try again'
+            return redirect(request, 'myapp/order_response.html', {'msg': msg})
+    else:
+        form = InterestForm()
+        return render(request, 'myapp/coursedetail.html', {'form': form, 'course': course})
