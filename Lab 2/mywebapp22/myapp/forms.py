@@ -13,8 +13,6 @@ class OrderForm(forms.ModelForm):
         model = Order;
         fields = ['Student', 'course', 'levels', 'order_date']
         widgets = {
-            'Student': forms.RadioSelect
-        }
-        widgets = {
+            'student': forms.RadioSelect,
             'order_date': forms.SelectDateWidget
         }
