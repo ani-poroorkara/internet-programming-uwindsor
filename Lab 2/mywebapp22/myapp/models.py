@@ -46,7 +46,7 @@ class Student(User):
 
 class Order(models.Model):
     course = models.ForeignKey(Course, related_name='orders', on_delete=models.CASCADE)
-    Student = models.ForeignKey(Student, related_name='course', on_delete=models.CASCADE)
+    Student = models.ForeignKey(Student, related_name='orders', on_delete=models.CASCADE)
     levels = models.PositiveIntegerField(null=True, blank=True)
     status = [('0','Cancelled'), ('1','Order Confirmed')]
     order_status = models.CharField(max_length=20, choices=status, default='1')
